@@ -38,7 +38,7 @@ bot.run
 
 ## Example Usage
 
-Here's an example on how to use the library!
+Here's an example on how to use the library and check for votes from a user!
 
 ```ruby
 require 'topgg'
@@ -49,4 +49,18 @@ client = Topgg.new("AUTH_TOKEN", "BOTID")
 p client.voted?("1234")
 ```
 
+## Posting bot stats
+The library provides you with autoposting functionality, and autoposts at an interval of 30 minutes:
+```ruby
+require 'topgg'
+require 'discordrb'
+
+bot = Discordrb::Bot.new token: "TOKEN"
+
+client = Topgg.new("AUTH_TOKEN", "BOTID")
+ bot.ready do |event|
+ client.auto_post_stats(bot) # The discordrb bot client.
+end
+bot.run
+```
 You can check out the [API Reference](https://rubydoc.info/gems/topgg/) to know about the other methods!
